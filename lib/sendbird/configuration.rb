@@ -7,7 +7,7 @@ module Sendbird
         super("missing #{keys}. Please configure all setttings using Sendbird.configure")
       end
     end
-
+    SENDBIRD_ENDPOINT = 'https://api.sendbird.com/v3/'
     include Dry::Configurable
 
     setting :api_token
