@@ -49,16 +49,7 @@ module Sendbird
     end
 
     def api_key(app)
-      if app
-        if api_key = Sendbird.applications[app]
-          @api_key = api_key
-        else
-          fail NotValidApplication.new(invalid_application_message(app))
-        end
-      else
-        @api_key = Sendbird.applications[Sendbird.default_app]
-      end
-      @api_key
+      Sendbird.config['app_token']
     end
 
     def conn
