@@ -49,7 +49,7 @@ module Sendbird
     end
 
     def api_key(app)
-      Sendbird.config['app_token']
+      Sendbird.config.app_token
     end
 
     def conn
