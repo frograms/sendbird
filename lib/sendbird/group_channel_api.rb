@@ -43,6 +43,10 @@ module Sendbird
       def leave(channel_url, body)
         put(path: build_url(channel_url, 'leave'), body: body)
       end
+
+      def ban_view(channel_url, user_id)
+        get(path: build_url(channel_url, 'ban', user_id))
+      end
     end
   end
 end
