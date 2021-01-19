@@ -44,6 +44,22 @@ module Sendbird
         put(path: build_url(channel_url, 'leave'), body: body)
       end
 
+      def ban_user(channel_url, body)
+        post(path: build_url(channel_url, 'ban'), body: body)
+      end
+
+      def ban_list(channel_url, params={})
+        get(path: build_url(channel_url, 'ban'), params: params)
+      end
+
+      def ban_update(channel_url, user_id, body)
+        put(path: build_url(channel_url, 'ban', user_id), body: body)
+      end
+
+      def ban_delete(channel_url, user_id)
+        delete(path: build_url(channel_url, 'ban', user_id))
+      end
+
       def ban_view(channel_url, user_id)
         get(path: build_url(channel_url, 'ban', user_id))
       end
