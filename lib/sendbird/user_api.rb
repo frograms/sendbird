@@ -79,6 +79,10 @@ module Sendbird
       def delete_push_preferences(user_id)
         delete(path: build_url(user_id, 'push_preference'))
       end
+
+      def leave_my_group_channels(user_id, body)
+        put(path: build_url(user_id, 'my_group_channels', 'leave'), body: body)
+      end
     end
 
     def self.register_token(user_id,token_type, body)
