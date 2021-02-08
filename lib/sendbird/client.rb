@@ -62,18 +62,26 @@ module Sendbird
     end
 
     def conn
-      @conn ||= Faraday.new(url: Sendbird.applications['endpoint'] || Sendbird::Configuration::SENDBIRD_ENDPOINT) do |c|
+      @conn ||= Faraday.new(url: sendbird_endpoint, request: request_options) do |c|
                   c.request  :url_encoded
                   c.adapter  Faraday.default_adapter
                 end
     end
 
     def http_basic_conn
-      @http_basic_conn ||= Faraday.new(url: Sendbird.applications['endpoint'] || Sendbird::Configuration::SENDBIRD_ENDPOINT) do |c|
+      @http_basic_conn ||= Faraday.new(url: sendbird_endpoint, request: request_options) do |c|
                   c.request  :url_encoded
                   c.adapter  Faraday.default_adapter
                   c.basic_auth(sendbird_user, sendbird_password)
                 end
+    end
+
+    def request_options
+      { open_timeout: Sendbird.applications['open_timeout'] || 2, timeout: Sendbird.applications['timeout'] || 5 }
+    end
+
+    def sendbird_endpoint
+      Sendbird.applications['endpoint'] || Sendbird::Configuration::SENDBIRD_ENDPOINT
     end
 
     def sendbird_user
