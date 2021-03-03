@@ -63,6 +63,10 @@ module Sendbird
       def ban_view(channel_url, user_id)
         get(path: build_url(channel_url, 'ban', user_id))
       end
+
+      def operators_delete(channel_url, params={})
+        delete(path: build_url(channel_url, 'operators'), params: params)
+      end
     end
   end
 end
