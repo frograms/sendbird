@@ -80,6 +80,10 @@ module Sendbird
         delete(path: build_url(user_id, 'push_preference'))
       end
 
+      def my_group_channels(user_id, body)
+        get(path: build_url(user_id, 'my_group_channels'), body: body)
+      end
+
       def leave_my_group_channels(user_id, body)
         put(path: build_url(user_id, 'my_group_channels', 'leave'), body: body)
       end
