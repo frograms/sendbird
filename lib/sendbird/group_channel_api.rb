@@ -36,6 +36,10 @@ module Sendbird
         post(path: build_url(channel_url, 'invite'), body: body)
       end
 
+      def accept(channel_url, body)
+        put(path: build_url(channel_url, 'accept'), body: body)
+      end
+
       def hide(channel_url, body)
         put(path: build_url(channel_url, 'hide'), body: body)
       end
